@@ -4,7 +4,7 @@
   "description": "Chatbot OpenAI",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack.conf.js"
+    "build": "./node_modules/.bin/webpack --config webpack.conf.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
