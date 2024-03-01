@@ -1,0 +1,163 @@
+@font-face {
+    font-family: 'Metropolis-ExtraLight';
+    src: url('../woff2/Metropolis-Light.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {    
+    background-color: #16202C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Metropolis-Light', sans-serif;
+}
+
+#login-signup {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-signup h3 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+main {
+    width: 1080px;
+    align-items: center;
+    justify-content: center;
+}
+
+#chat-container {
+    max-width: 100%;
+    margin: 10px 0 0 0;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#chat-box {
+    height: 60vh;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solod #ccc;
+    margin-bottom: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#input-send-container {
+    display: flex;
+}
+
+#chat-input, #send-btn {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 1em;
+}
+
+#chat-input {
+    color: #fcfcfc;
+    width: 100%;
+    border-right: 0; 
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    font-family: 'Metropolis-Light', sans-serif;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    resize: vertical;
+    min-height: 30px;
+    max-height: 150px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#send-btn {
+    border-left: 0; 
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#send-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: #fcfcfc;
+}
+
+#user-profile {
+    color: white;
+    font-size: 20px;
+}
+
+#api-key-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#login-username, #login-password, #signup-email, #signup-username, #signup-password, #api-key-input {
+    border-radius: 10px;
+    padding: 0 10px 0 10px;
+    width: 200px;
+    height: 30px;
+    font-family: 'Metropolis-Light', sans-serif;
+}
+
+#login-btn, #signup-btn, #login-sw, #signup-sw, #api-btn {
+    width: 110px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 10px;
+    font-family: 'Metropolis-Light', sans-serif;
+}
+
+#model-option {
+    border-radius: 10px;
+    height: 30px;
+    font-family: 'Metropolis-Light', sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.message {
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.user-message {
+    background-color: #24976f;
+    text-align: left;
+    align-self: flex-end;
+    max-width: 80%;
+}
+.bot-message {
+    background-color: #253b4b;
+    text-align: left;
+    align-self: flex-start;
+    max-width: 80%;
+}
+.user-message pre, .bot-message pre {
+    background-color: #282a36;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.user-message code, .bot-message code {
+    color: #fcfcfc;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
