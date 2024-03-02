@@ -24,7 +24,7 @@ window.loginUser = async function () {
     passwordInput.value = '';
 
     try {
-        const response = await fetch('/login', {
+        const response = await fetch('/.netlify/functions/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,12 +36,14 @@ window.loginUser = async function () {
         if (response.ok) {
             const usernameGet = data.username;
             const userProfileDiv = document.getElementById('user-profile');
+            const userInputValue = document.getElementById('user-id-ses');
 
             localStorage.setItem('username', data.username);
             alert('Successfully logged in.');
             document.getElementById('login-container').classList.add('hidden');
             document.getElementById('chat-page').classList.remove('hidden');
             userProfileDiv.innerHTML = `<h5>Welcome, ${usernameGet}!</h5>`;
+            userInputValue.value = usernameGet;
 
             const conversationHistory = data.conversationHistory;
             if (conversationHistory && conversationHistory.length > 0) {
@@ -85,7 +87,7 @@ window.signUpUser = async function () {
     passwordInput.value = '';
 
     try {
-        const response = await fetch('/signup', {
+        const response = await fetch('.netlify/functions/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -114,15 +116,16 @@ let modelName = '';
 window.submitApiKey = async function () {
     const apiKeyInput = document.getElementById('api-key-input');
     const apiKey = apiKeyInput.value;
+    const username = document.getElementById('user-id-ses').value;
     apiKeyInput.value = '';
 
     try {
-        const response = await fetch('/api-key', {
+        const response = await fetch('/.netlify/functions/api-key', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({apiKey, modelName}),
+            body: JSON.stringify({apiKey, modelName, username}),
         });
 
         const data = await response.json();
@@ -145,7 +148,7 @@ window.sendMessage = async function () {
     appendMessage('Chatbot', 'Generating answer...');
 
     try {
-        const response = await fetch('/chat', {
+        const response = await fetch('/.netlify/functions/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -162,15 +165,16 @@ window.sendMessage = async function () {
         } else {
             const chatBox = document.getElementById('chat-box');
             const messages = Array.from(chatBox.children);
-            const lastUserMsg = messages.find(msg => msg.classList.contains('user-message'));
-            const lastBotMsg = messages.find(msg => msg.classList.contains('bot-message'));
-            if (lastUserMsg) chatBox.removeChild(lastUserMsg);
+            // const lastUserMsg = messages.find(msg => msg.classList.contains('you'));
+            // const lastBotMsg = messages.find(msg => msg.classList.contains('chatbot'));
+            // if (lastUserMsg) chatBox.removeChild(lastUserMsg);
+            const lastBotMsg = messages.find(msg => msg.classList.contains('bot-message') && msg.textContent.includes('Generating answer...'));
             if (lastBotMsg) chatBox.removeChild(lastBotMsg);
             alert(data.message);
         }
     } catch (error) {
         console.error('Error sending message:', error);
-        alert('An error occurred. Please check your API Key or try again.');
+        alert('Error processing your message, please try again.');
 
         const chatBox = document.getElementById('chat-box');
         const messages = Array.from(chatBox.children);

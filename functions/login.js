@@ -9,9 +9,11 @@ exports.handler = async function(event, context) {
 
     const { username, password } = JSON.parse(event.body);
     const user = await User.findOne({ username });
+    console.log('username:', user);
     if (!user) {
         return { statusCode: 401, body: JSON.stringify({ message: 'Invalid username or password.' }) };
     }
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
         return { statusCode: 401, body: JSON.stringify({ message: 'Invalid username or password.' }) };
