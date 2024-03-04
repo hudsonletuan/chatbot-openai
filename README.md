@@ -39,7 +39,8 @@ Chatbot OpenAI is a web-based chatbot application that helps users use OpenAI's 
 
 ## Server-Side Implementation
 
-Originally, the server-side of the application is built using Express.js and connects to a MongoDB database using Mongoose. The server handles user authentication, message storage, and communication with the OpenAI API. You can check it out in `/src/routes/`.
+Originally, the server-side of the application was built using Express.js and connects to a MongoDB database using Mongoose. The server handles user authentication, message storage, and communication with the OpenAI API. You can check it out in `/src/routes/`.
+Originally, `session` was used for authentication. However, since all routes are transited into serverless functions to deploy on Netlify, `JSON Web Tokens` (`JWT`) is used to handle the authentication.
 
 ## Serverless Functions
 
@@ -80,7 +81,7 @@ The client-side of the application is built using HTML, CSS, and JavaScript. It 
 
 - **Fetch API**: A modern, promise-based API for making asynchronous HTTP requests from the browser.
 
-<i>For the functions (`login.js`, `signup.js`, `api-key.js`, and `chat.js`) located in the functions directory, they can be accessed via the URL `/.netlify/functions/_____`. This URL is not directly related to the file structure of the project on local machine or in repository. Instead, it's a URL pattern that Netlify uses to route requests to the serverless functions.</i>
+<i>For the functions (`login.js`, `signup.js`, `api-key.js`, and `chat.js`) located in the functions directory, they can be accessed via the URL `/.netlify/functions/_____`. This URL is not directly related to the file structure of the project on the local machine or in the repository. Instead, it's a URL pattern that Netlify uses to route requests to the serverless functions.</i>
 
 ### Deployment
 
