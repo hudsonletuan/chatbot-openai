@@ -69,6 +69,7 @@ window.loginUser = async function () {
         } else {
             alert(data.message);
         }
+        scrollToBottom();
     } catch (error) {
         console.error('Error logging in:', error);
         alert('An error occurred. Please try again.');
@@ -209,3 +210,8 @@ document.getElementById('chat-input').addEventListener('keydown', async function
         await sendMessage();
     }
 });
+
+function scrollToBottom() {
+    const chatBox = document.getElementById('chat-box');
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
