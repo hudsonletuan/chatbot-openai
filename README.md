@@ -8,6 +8,7 @@
 ## Overview
 
 Chatbot OpenAI is a web-based chatbot application that helps users use OpenAI's GPT-3.5-Turbo and GPT-4 AI models via API keys without accessing the actual account. This web application is designed to be user-friendly, allowing users to interact with the chatbot through a simple interface.
+The application was originally built using Node.js with Express.js for the backend and MongoDB for the database. To facilitate deployment on Netlify, the application's server-side logic, including routes, was converted into serverless functions. This transition allows for scalable and efficient execution of backend operations without the need for a traditional server, enhancing the application's performance and scalability.
 
 ## Features
 
@@ -44,7 +45,7 @@ Originally, `session` was used for authentication. However, since all routes are
 
 ## Serverless Functions
 
-With the transition to serverless functions for deployment on Netlify, the application's server-side logic is now encapsulated within serverless functions. This approach allows for scalable and efficient execution of backend operations without the need for a traditional server.
+With the transition to serverless functions for deployment on Netlify, the application's server-side logic is now encapsulated within serverless functions. This approach allows for scalable and efficient execution of backend operations without the need for a traditional server. The serverless functions are saved in the `functions` folder.
 
 ### Key Endpoints
 
