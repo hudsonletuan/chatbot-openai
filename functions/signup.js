@@ -1,4 +1,5 @@
 const User = require('../src/models/userModel');
+const ApiKey = require('../src/models/apiKeyModel');
 const bcrypt = require('bcryptjs');
 const connectDB = require('../src/db');
 
@@ -17,5 +18,9 @@ exports.handler = async function(event, context) {
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ username, email, password: hashedPassword });
     await newUser.save();
+
+    const apiKey = {An GPT-3.5-Turbo API Key};
+    const newApiKey = new ApiKey({ username: newUser.username, apiKey: apiKey, modelName: 'gpt-3.5-turbo' });
+    await newApiKey.save();
     return { statusCode: 200, body: JSON.stringify({ message: 'Sign-up successful. You can now log in.' }) };
 };
