@@ -13,7 +13,7 @@
 ## Features
 
 - **User Authentication**: Users must log in to the application to start their chat.
-- **Real-time Chat**: Users can send messages to the chatbot in real-time and receive responses.
+- **Real-time Chat**: Users can send messages to the chatbot in real time and receive responses.
 - **Error Handling**: The application gracefully handles errors, such as invalid API keys, and provides clear feedback to the user.
 - **Message Persistence**: Messages are stored in a database, allowing users to view their chat history upon logging back in.
 - **API Key Management**: Users can manage their API keys and select the model they wish to use for the chatbot.
@@ -30,17 +30,19 @@
 1. Clone the repository to your local machine.
 2. Navigate to the project directory and run `npm install` to install the necessary dependencies.
 3. Create a `.env` file in the project's root directory (if missing) and add your OpenAI API key (if necessary but **NOT** recommended) and any other required environment variables. There are 3 environment variables used which are OPENAI_API_KEY, MONGODB_CONNECT_URL, and JWT_SECRET.
-4. Start the server by running `npm start`.
+4. Go to `signup.js` file, add your API key to `apiKey` variable, if your API key relies on GPT-4 model, then change the `modelName` to 'gpt-4'.
+5. Start the server by running `npm start`.
 
 ### Usage
 
 1. Open your web browser and navigate to `http://localhost:3000` (or the port specified in the file app.js. You can also move the PORT variable to your environment variables `.env` file).
-2. Log in with your credentials or create a new account.
+2. Login with your credentials or create a new account.
 3. Start chatting with the chatbot by typing your message into the input field and pressing Enter or clicking the send icon next to the input field.
+4. Change your API key by entering your new API key into the "Enter your API key..." box, selecting the model then hitting the Submit button.
 
 ## Server-Side Implementation
 
-Originally, the server-side of the application was built using Express.js and connects to a MongoDB database using Mongoose. The server handles user authentication, message storage, and communication with the OpenAI API. You can check it out in `/src/routes/`.
+Originally, the server side of the application was built using Express.js and connected to a MongoDB database using Mongoose. The server handles user authentication, message storage, and communication with the OpenAI API. You can check it out in `/src/routes/`.
 Originally, `session` was used for authentication. However, since all routes are transited into serverless functions to deploy on Netlify, `JSON Web Tokens` (`JWT`) is used to handle the authentication.
 
 ## Serverless Functions
@@ -60,7 +62,7 @@ The server is designed to handle errors gracefully. When an error occurs, such a
 
 ## Client-Side Implementation
 
-The client-side of the application is built using HTML, CSS, and JavaScript. It provides a user-friendly and simple interface for users to interact with the chatbot.
+The client side of the application is built using HTML, CSS, and JavaScript. It provides a user-friendly and simple interface for users to interact with the chatbot.
 
 ### Key Components
 
